@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10091c">
+<title>NEXUS RP | La città è tua</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --pink: #ff3e9d;
+    --purple: #9b5cff;
+    --cyan: #43e9ff;
+    --dark: #10091c;
+    --white: #fff;
+    --muted: #b9aecb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(16, 9, 28, .85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span,
+.footer-logo span {
+    color: var(--pink);
+}
+
+nav {
+    display: flex;
+    gap: 23px;
+    align-items: center;
+}
+
+nav a {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 20px 100px;
+    position: relative;
+    background:
+        linear-gradient(to bottom, rgba(16,9,28,.2), rgba(16,9,28,.55) 55%, var(--dark)),
+        url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=90') center/cover;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,62,157,.16), transparent 45%, rgba(67,233,255,.13));
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 950px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 9px 20px;
+    border: 1px solid rgba(255,62,157,.7);
+    border-radius: 30px;
+    color: var(--pink);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    background: rgba(255,62,157,.08);
+}
+
+.hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(75px, 13vw, 155px);
+    line-height: .85;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0 0 35px rgba(255,62,157,.35);
+}
+
+.hero h1 span {
+    display: block;
+    background: linear-gradient(90deg, var(--pink), var(--purple), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 30px auto;
+    color: #e0d7ec;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn {
+    padding: 16px 28px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition: .3s;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(100deg, var(--pink), var(--purple));
+    box-shadow: 0 0 25px rgba(255,62,157,.3);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(255,255,255,.06);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(155,92,255,.5);
+}
+
+section {
+    padding: 110px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title small {
+    color: var(--pink);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.section-title h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(45px, 7vw, 75px);
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.section-title p {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 600px;
+    line-height: 1.8;
+    margin: 12px auto 0;
+}
+
+.about {
+    background: linear-gradient(180deg, var(--dark), #170d28);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.09);
+    padding: 35px 28px;
+    border-radius: 10px;
+    transition: .35s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--pink);
+    box-shadow: 0 15px 45px rgba(255,62,157,.1);
+}
+
+.card .icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 29px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.departments {
+    background: #170d28;
+}
+
+.department-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
+}
+
+.department-card::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: -50px;
+    bottom: -60px;
+    border-radius: 50%;
+    background: var(--glow);
+    filter: blur(65px);
+    opacity: .35;
+    pointer-events: none;
+}
+
+.rules {
+    background: linear-gradient(180deg, #170d28, var(--dark));
+}
+
+.rules-list {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.rule {
+    padding: 20px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 7px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.rule-number {
+    color: var(--pink);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 27px;
+    font-weight: 900;
+}
+
+.rule h4 {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.rule p {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* GTA 6 NEWS */
+
+.news-section {
+    background: linear-gradient(180deg, #10091c, #190d2b);
+}
+
+.news-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.news-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.news-status {
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.news-card {
+    padding: 25px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 9px;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pink);
+}
+
+.news-card small {
+    color: var(--pink);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.news-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 25px;
+    margin: 12px 0;
+    line-height: 1.2;
+}
+
+.news-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.news-card a {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.news-button {
+    border: 1px solid var(--pink);
+    color: white;
+    background: rgba(255,62,157,.1);
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    transition: .3s;
+}
+
+.news-button:hover {
+    background: var(--pink);
+}
+
+.news-loading {
+    text-align: center;
+    padding: 35px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.join {
+    text-align: center;
+    background:
+        linear-gradient(rgba(16,9,28,.86), rgba(16,9,28,.95)),
+        url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+
+.join-box {
+    max-width: 750px;
+    margin: auto;
+    padding: 55px 30px;
+    border: 1px solid rgba(255,62,157,.35);
+    border-radius: 12px;
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(10px);
+}
+
+.join-box h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(45px, 7vw, 75px);
+    text-transform: uppercase;
+}
+
+.join-box p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 18px auto;
+    max-width: 550px;
+}
+
+.contacts {
+    background: #170d28;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.contact {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    transition: .3s;
+}
+
+.contact:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+.contact .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.contact h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.contact p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-bottom: 15px;
+}
+
+.contact a {
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+footer {
+    padding: 35px 8%;
+    background: #0a0611;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+
+footer .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+footer p {
+    color: #82778f;
+    font-size: 10px;
+    line-height: 1.8;
+    margin-top: 12px;
+}
+
+@media(max-width: 1000px) {
+    nav {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+}
+
+@media(max-width: 850px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: #10091c;
+        flex-direction: column;
+        gap: 22px;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rules-list {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 80px 6%;
+    }
+}
+
+@media(max-width: 700px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 480px) {
+    .hero h1 {
+        font-size: 75px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .buttons {
+        padding: 0 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="logo">NEXUS <span>RP</span></a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Apri menu">☰</button>
+
+    <nav id="nav">
+        <a href="#home">HOME</a>
+        <a href="#citta">LA CITTÀ</a>
+        <a href="#dipartimenti">DIPARTIMENTI</a>
+        <a href="#regolamento">REGOLAMENTO</a>
+        <a href="#news">GTA 6 NEWS</a>
+        <a href="#entra">COME ENTRARE</a>
+        <a href="#contatti">CONTATTI</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="tag">BENVENUTO A NEXUS RP</div>
+
+        <h1>LA CITTÀ.<span>È TUA.</span></h1>
+
+        <p>
+            Una nuova vita ti aspetta. Crea il tuo personaggio,
+            costruisci il tuo futuro e scrivi la tua storia.
+            Ogni scelta ha una conseguenza. Ogni incontro può cambiare tutto.
+        </p>
+
+        <div class="buttons">
+            <a class="btn btn-primary"
+               href="https://cfx.re/join/988dxxa"
+               target="_blank" rel="noopener noreferrer">
+                ENTRA IN CITTÀ
+            </a>
+
+            <a class="btn btn-secondary"
+               href="https://discord.gg/WD9VNUUSpM"
+               target="_blank" rel="noopener noreferrer">
+                ENTRA NEL DISCORD
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- LA CITTÀ -->
+
+<section class="about" id="citta">
+    <div class="section-title">
+        <small>SCOPRI NEXUS</small>
+        <h2>UNA NUOVA VITA</h2>
+        <p>
+            Non sei qui per guardare una storia. Sei qui per viverla.
+            La città è piena di opportunità, persone e possibilità.
+        </p>
+    </div>
+
+    <div class="about-grid">
+        <div class="card">
+            <div class="icon">🌴</div>
+            <h3>VIVI LA CITTÀ</h3>
+            <p>
+                Esplora ogni angolo, incontra nuovi cittadini e trova
+                il tuo posto all'interno della comunità.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚘</div>
+            <h3>COSTRUISCI IL TUO FUTURO</h3>
+            <p>
+                Lavora, guadagna, crea relazioni e raggiungi i tuoi
+                obiettivi attraverso le tue decisioni.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⭐</div>
+            <h3>SCRIVI LA TUA STORIA</h3>
+            <p>
+                Ogni personaggio ha un passato. Il tuo futuro dipende
+                dalle scelte che farai in città.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- DIPARTIMENTI -->
+
+<section class="departments" id="dipartimenti">
+    <div class="section-title">
+        <small>IL CUORE DELLA CITTÀ</small>
+        <h2>I DIPARTIMENTI</h2>
+        <p>
+            Servizi essenziali per mantenere la città viva,
+            organizzata e sempre in movimento.
+        </p>
+    </div>
+
+    <div class="about-grid">
+        <div class="card department-card" style="--glow:#398cff">
+            <div class="icon">🚔</div>
+            <h3>POLIZIA</h3>
+            <p>
+                Proteggi i cittadini, mantieni l'ordine e garantisci
+                la sicurezza delle strade.
+            </p>
+        </div>
+
+        <div class="card department-card" style="--glow:#ff4545">
+            <div class="icon">🚑</div>
+            <h3>EMS</h3>
+            <p>
+                Intervieni nelle emergenze, presta soccorso e
+                prenditi cura della popolazione.
+            </p>
+        </div>
+
+        <div class="card department-card" style="--glow:#ffae42">
+            <div class="icon">🔧</div>
+            <h3>MECCANICI</h3>
+            <p>
+                Ripara i veicoli, gestisci la tua attività e
+                diventa un punto di riferimento per la città.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- REGOLAMENTO -->
+
+<section class="rules" id="regolamento">
+    <div class="section-title">
+        <small>LE REGOLE DELLA CITTÀ</small>
+        <h2>REGOLAMENTO</h2>
+        <p>
+            Il rispetto reciproco è alla base di ogni esperienza
+            roleplay. Ecco le regole fondamentali.
+        </p>
+    </div>
+
+    <div class="rules-list">
+        <div class="rule">
+            <div class="rule-number">01</div>
+            <div>
+                <h4>RISPETTO</h4>
+                <p>Rispetta tutti i giocatori e lo staff. Non sono tollerati insulti e comportamenti tossici.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">02</div>
+            <div>
+                <h4>ROLEPLAY SERIO</h4>
+                <p>Interpreta il tuo personaggio in modo coerente e contribuisci alla storia della città.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">03</div>
+            <div>
+                <h4>NO METAGAMING</h4>
+                <p>Non utilizzare informazioni ottenute fuori dal gioco per avvantaggiarti in roleplay.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">04</div>
+            <div>
+                <h4>NO POWERGAMING</h4>
+                <p>Non compiere azioni irrealistiche o imporre agli altri giocatori le conseguenze delle tue azioni.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">05</div>
+            <div>
+                <h4>NO RDM / VDM</h4>
+                <p>Non uccidere o investire altri giocatori senza una valida motivazione roleplay.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">06</div>
+            <div>
+                <h4>VALORE DELLA VITA</h4>
+                <p>Comportati come una persona reale e considera i rischi delle situazioni in cui ti trovi.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">07</div>
+            <div>
+                <h4>NO COMBAT LOGGING</h4>
+                <p>Non uscire dal server per evitare conseguenze o situazioni di roleplay.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">08</div>
+            <div>
+                <h4>NO CHEAT E BUG ABUSE</h4>
+                <p>È vietato utilizzare trucchi, exploit o bug per ottenere vantaggi.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">09</div>
+            <div>
+                <h4>SEGUI LO STAFF</h4>
+                <p>Collabora con lo staff e utilizza i canali ufficiali per segnalazioni e assistenza.</p>
+            </div>
+        </div>
+
+        <div class="rule">
+            <div class="rule-number">10</div>
+            <div>
+                <h4>DIVERTITI</h4>
+                <p>Gioca per creare storie, collaborare e vivere un'esperienza piacevole con gli altri.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <a class="btn btn-primary"
+           href="https://discord.gg/WD9VNUUSpM"
+           target="_blank" rel="noopener noreferrer">
+            REGOLAMENTO COMPLETO SU DISCORD
+        </a>
+    </div>
+</section>
+
+<!-- GTA 6 NEWS -->
+
+<section class="news-section" id="news">
+    <div class="section-title">
+        <small>ULTIMI AGGIORNAMENTI</small>
+        <h2>NEXUS NEWS</h2>
+        <p>
+            Tutte le ultime notizie su GTA VI, aggiornamenti,
+            Rockstar Games e il mondo di Grand Theft Auto.
+        </p>
+    </div>
+
+    <div class="news-container">
+        <div class="news-top">
+            <span class="news-status" id="newsStatus">
+                ● CARICAMENTO NOTIZIE...
+            </span>
+
+            <button class="news-button" id="refreshNews">
+                ↻ AGGIORNA
+            </button>
+        </div>
+
+        <div class="news-grid" id="newsGrid">
+            <div class="news-loading">
+                Caricamento delle ultime notizie di GTA VI...
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a class="btn btn-secondary"
+               href="https://www.rockstargames.com/newswire"
+               target="_blank" rel="noopener noreferrer">
+                ROCKSTAR NEWSWIRE →
+            </a>
+
+            <a class="btn btn-secondary"
+               href="https://news.google.com/search?q=GTA%206&hl=it&gl=IT&ceid=IT%3Ait"
+               target="_blank" rel="noopener noreferrer">
+                TUTTE LE NOTIZIE GTA 6 →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- COME ENTRARE -->
+
+<section class="join" id="entra">
+    <div class="join-box">
+        <div class="tag">IL TUO VIAGGIO INIZIA QUI</div>
+
+        <h2>PRONTO A ENTRARE?</h2>
+
+        <p>
+            Per entrare in NEXUS RP, unisciti al nostro Discord,
+            apri un ticket e segui la procedura per la whitelist.
+            Una volta pronto, potrai raggiungere la città su FiveM.
+        </p>
+
+        <div class="buttons">
+            <a class="btn btn-primary"
+               href="https://discord.gg/WD9VNUUSpM"
+               target="_blank" rel="noopener noreferrer">
+                RICHIEDI LA WHITELIST
+            </a>
+
+            <a class="btn btn-secondary"
+               href="https://fivem.net/"
+               target="_blank" rel="noopener noreferrer">
+                SCARICA FIVEM
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTATTI -->
+
+<section class="contacts" id="contatti">
+    <div class="section-title">
+        <small>RESTA CONNESSO</small>
+        <h2>SEGUICI</h2>
+        <p>
+            Entra nella community e rimani aggiornato
+            su tutto quello che succede a NEXUS RP.
+        </p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact">
+            <div class="icon">💬</div>
+            <h3>DISCORD</h3>
+            <p>La nostra community ufficiale.</p>
+            <a href="https://discord.gg/WD9VNUUSpM"
+               target="_blank" rel="noopener noreferrer">
+                ENTRA NEL SERVER →
+            </a>
+        </div>
+
+        <div class="contact">
+            <div class="icon">🎮</div>
+            <h3>FIVEM</h3>
+            <p>Raggiungi direttamente la città.</p>
+            <a href="https://cfx.re/join/988dxxa"
+               target="_blank" rel="noopener noreferrer">
+                COLLEGATI →
+            </a>
+        </div>
+
+        <div class="contact">
+            <div class="icon">📺</div>
+            <h3>TWITCH</h3>
+            <p>Seguici durante le dirette.</p>
+            <a href="https://www.twitch.tv/shxrobot"
+               target="_blank" rel="noopener noreferrer">
+                SEGUICI →
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-logo">NEXUS <span>RP</span></div>
+    <p>
+        © <span id="year"></span> NEXUS RP — Tutti i diritti riservati.<br>
+        NEXUS RP è un progetto indipendente e non è affiliato
+        a Rockstar Games o Take-Two Interactive.
+    </p>
+</footer>
+
+<script>
+/* MENU MOBILE */
+
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
+
+menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+
+document.querySelectorAll("#nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+    });
+});
+
+/* ANNO AUTOMATICO */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+/* GTA 6 NEWS */
+
+const gtaNewsFeed =
+    "https://news.google.com/rss/search?q=GTA+6+OR+Grand+Theft+Auto+VI&hl=it&gl=IT&ceid=IT:it";
+
+const newsGrid = document.getElementById("newsGrid");
+const newsStatus = document.getElementById("newsStatus");
+const refreshNews = document.getElementById("refreshNews");
+
+let isLoadingNews = false;
+
+async function loadGtaNews() {
+
+    if (isLoadingNews) return;
+
+    isLoadingNews = true;
+
+    newsStatus.textContent = "● AGGIORNAMENTO IN CORSO...";
+    refreshNews.disabled = true;
+    refreshNews.textContent = "CARICAMENTO...";
+
+    try {
+
+        const api =
+            "https://api.rss2json.com/v1/api.json?rss_url=" +
+            encodeURIComponent(gtaNewsFeed);
+
+        const response = await fetch(api);
+
+        if (!response.ok) {
+            throw new Error("Errore di connessione");
+        }
+
+        const data = await response.json();
+
+        if (data.status !== "ok" || !data.items || !data.items.length) {
+            throw new Error("Nessuna notizia disponibile");
+        }
+
+        newsGrid.replaceChildren();
+
+        data.items.slice(0, 8).forEach(item => {
+
+            const card = document.createElement("article");
+            card.className = "news-card";
+
+            const date = document.createElement("small");
+
+            if (item.pubDate) {
+                const parsedDate = new Date(item.pubDate);
+
+                date.textContent = isNaN(parsedDate.getTime())
+                    ? "NOTIZIA GTA VI"
+                    : parsedDate.toLocaleDateString("it-IT");
+            } else {
+                date.textContent = "NOTIZIA GTA VI";
+            }
+
+            const title = document.createElement("h3");
+            title.textContent = item.title || "Notizia GTA VI";
+
+            const description = document.createElement("p");
+
+            const cleanDescription = document.createElement("div");
+            cleanDescription.innerHTML = item.description || "";
+
+            description.textContent =
+                (cleanDescription.textContent || "Apri l'articolo per leggere tutti i dettagli.")
+                .trim()
+                .slice(0, 200);
+
+            const link = document.createElement("a");
+            link.href = item.link;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "LEGGI LA NOTIZIA →";
+
+            card.append(date, title, description, link);
+            newsGrid.appendChild(card);
+        });
+
+        newsStatus.textContent = "● NOTIZIE AGGIORNATE";
+
+    } catch (error) {
+
+        newsGrid.replaceChildren();
+
+        const card = document.createElement("article");
+        card.className = "news-card";
+
+        const title = document.createElement("h3");
+        title.textContent = "Notizie momentaneamente non disponibili";
+
+        const description = document.createElement("p");
+        description.textContent =
+            "Non riusciamo a raggiungere il servizio delle notizie. Riprova tra poco.";
+
+        const link = document.createElement("a");
+        link.href = "https://www.rockstargames.com/newswire";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "VAI ALLE NOTIZIE ROCKSTAR →";
+
+        card.append(title, description, link);
+        newsGrid.appendChild(card);
+
+        newsStatus.textContent = "● SERVIZIO TEMPORANEAMENTE NON DISPONIBILE";
+
+    } finally {
+
+        isLoadingNews = false;
+        refreshNews.disabled = false;
+        refreshNews.textContent = "↻ AGGIORNA";
+    }
+}
+
+/* AGGIORNAMENTO MANUALE */
+
+refreshNews.addEventListener("click", loadGtaNews);
+
+/* CARICAMENTO AUTOMATICO */
+
+loadGtaNews();
+
+/* AGGIORNA OGNI 15 MINUTI */
+
+setInterval(loadGtaNews, 15 * 60 * 1000);
+
+</script>
+
+</body>
+</html>
